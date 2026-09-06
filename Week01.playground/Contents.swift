@@ -124,3 +124,8 @@ print(al.count)
 // makes a set from the arr
 let j = Set(al)
 print(j.count)
+
+let currentAge = 18
+let canVote = currentAge >= 18 ? "Yes" : "No"
+
+
