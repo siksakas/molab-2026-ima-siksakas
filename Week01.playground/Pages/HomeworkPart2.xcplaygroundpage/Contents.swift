@@ -1,7 +1,5 @@
 import UIKit
 
-
-
 func createIsland(islandSize: Int) {
     for i in 1...islandSize {
         var str = ""
