@@ -33,12 +33,12 @@ func createSmoke(size: Int) {
         var currLine: String = ""
         currLine.append(whiteSpace)
         
-        if((Int.random(in: 0...3))%2==0) {
+        if((Int.random(in: 1...2))%2==0) {
             currLine.append(" ")
         }
         for k in 1...lineSize {
             var variation = 0
-            if (lineSize>8){
+            if (lineSize>6){
                 variation = Int.random(in: 0...2)
             }
             //print("k equals + \(k)")
