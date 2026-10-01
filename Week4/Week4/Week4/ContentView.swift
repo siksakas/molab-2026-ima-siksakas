@@ -18,8 +18,6 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Flashcard Practice")
-                .font(Font.largeTitle.bold())
             
             FlashcardView(flashcard: flashcards[index])
             

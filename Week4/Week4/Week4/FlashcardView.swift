@@ -30,7 +30,7 @@ struct FlashcardView: View {
                 utterance.rate = 0.3
                 audioPlayer.speak(utterance)
             } label: {
-                Image(systemName: "speaker.fill")
+                Image(systemName: "speaker.wave.3")
             }
         }
         .frame(maxWidth: .infinity, maxHeight: 300)
