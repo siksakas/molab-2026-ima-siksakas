@@ -5,10 +5,20 @@
 //  Created by Siksaka Suriyasat on 10/1/26.
 //
 import SwiftUI
+import AVFoundation
+
+let bundleAudio = [
+    "Correct.mp3",
+    "Incorrect.mp3"
+];
 
 struct TestingView: View {
     @State private var index = 0
     @State var currentCorrectAnswer = Int.random(in:0...2)
+    @State private var player: AVAudioPlayer? = nil
+    
+    let correct = bundleAudio[0]
+    let incorrect = bundleAudio[1]
     
     var body: some View {
         VStack{
@@ -22,8 +32,13 @@ struct TestingView: View {
         VStack (spacing:20){
             Button {
                 if currentCorrectAnswer == 0 {
+                    player = loadBundleAudio(correct)
+                    player?.play()
                     index += 1
                     currentCorrectAnswer = Int.random(in:0...2)
+                } else {
+                    player = loadBundleAudio(incorrect)
+                    player?.play()
                 }
             } label: {
                 if currentCorrectAnswer == 0 {
@@ -63,8 +78,13 @@ struct TestingView: View {
             
             Button {
                 if currentCorrectAnswer == 1 {
+                    player = loadBundleAudio(correct)
+                    player?.play()
                     index += 1
                     currentCorrectAnswer = Int.random(in:0...2)
+                } else {
+                    player = loadBundleAudio(incorrect)
+                    player?.play()
                 }
             } label: {
                 if currentCorrectAnswer == 1 {
@@ -104,8 +124,13 @@ struct TestingView: View {
             
             Button {
                 if currentCorrectAnswer == 2 {
+                    player = loadBundleAudio(correct)
+                    player?.play()
                     index += 1
                     currentCorrectAnswer = Int.random(in:0...2)
+                } else {
+                    player = loadBundleAudio(incorrect)
+                    player?.play()
                 }
             } label: {
                 if currentCorrectAnswer == 2 {
@@ -153,11 +178,20 @@ func getRandomFlashcard(_ cannotBe: Int) -> Int {
     if random == cannotBe {
         random = getRandomFlashcard(cannotBe)
     }
-
-    print(random)
+//    print(random)
     return random
 }
 
+func loadBundleAudio(_ fileName:String) -> AVAudioPlayer? {
+    let path = Bundle.main.path(forResource: fileName, ofType:nil)!
+    let url = URL(fileURLWithPath: path)
+    do {
+        return try AVAudioPlayer(contentsOf: url)
+    } catch {
+        print("loadBundleAudio error", error)
+    }
+    return nil
+}
 
 #Preview {
     TestingView()
