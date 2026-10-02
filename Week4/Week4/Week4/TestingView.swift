@@ -8,8 +8,7 @@ import SwiftUI
 
 struct TestingView: View {
     @State private var index = 0
-    var correctAnswerHasAppeared: Bool = false
-    var currentCorrectAnswer = Int.random(in:0...2)
+    @State var currentCorrectAnswer = Int.random(in:0...2)
     
     var body: some View {
         VStack{
@@ -22,7 +21,10 @@ struct TestingView: View {
     private var answerButtons: some View {
         VStack (spacing:20){
             Button {
-                
+                if currentCorrectAnswer == 0 {
+                    index += 1
+                    currentCorrectAnswer = Int.random(in:0...2)
+                }
             } label: {
                 if currentCorrectAnswer == 0 {
                     Text(flashcards[index].back)
@@ -60,7 +62,10 @@ struct TestingView: View {
             }
             
             Button {
-                
+                if currentCorrectAnswer == 1 {
+                    index += 1
+                    currentCorrectAnswer = Int.random(in:0...2)
+                }
             } label: {
                 if currentCorrectAnswer == 1 {
                     Text(flashcards[index].back)
@@ -98,7 +103,10 @@ struct TestingView: View {
             }
             
             Button {
-                
+                if currentCorrectAnswer == 2 {
+                    index += 1
+                    currentCorrectAnswer = Int.random(in:0...2)
+                }
             } label: {
                 if currentCorrectAnswer == 2 {
                     Text(flashcards[index].back)
@@ -145,6 +153,8 @@ func getRandomFlashcard(_ cannotBe: Int) -> Int {
     if random == cannotBe {
         random = getRandomFlashcard(cannotBe)
     }
+
+    print(random)
     return random
 }
 
