@@ -8,52 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var index = 0
-    
-    let flashcards: [Flashcard] = [
-        Flashcard(front: "สวัสดี", back: "Hello"),
-        Flashcard(front: "ขอบคุณ", back: "Thank you"),
-        Flashcard(front: "ขอโทษ", back: "Sorry")
-    ]
     
     var body: some View {
-        VStack {
-            
-            FlashcardView(flashcard: flashcards[index])
-            
-            HStack {
-                Button {
-                    if(index>0){
-                        index -= 1
-                    } else {
-                        index = flashcards.count-1
-                    }
-                } label: {
-                    Image(systemName: "arrow.left")
-                        .font(Font.largeTitle)
-                        .frame(maxWidth: .infinity, maxHeight: 75)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.bg)
-                        )
-                }
-                
-                Button {
-                    if(index<flashcards.count-1){
-                        index += 1
-                    } else {
-                        index = 0
-                    }
-                } label: {
-                    Image(systemName: "arrow.right")
-                        .font(Font.largeTitle)
-                        .frame(maxWidth: .infinity, maxHeight: 75)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.bg)
-                        )
-                }
+        NavigationStack {
+            NavigationLink{
+                ReviewView()
+            } label: {
+                Text("Review Flashcards")
+                    .foregroundStyle(Color.bgDarker)
+                    .font(Font.body.bold())
+                    .fontDesign(.rounded)
+                    
             }
+            .frame(maxWidth: .infinity,maxHeight: 75)
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.bg)
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.bgDark)
+                    .offset(y:6)
+            )
+
         }
         .padding()
     }
