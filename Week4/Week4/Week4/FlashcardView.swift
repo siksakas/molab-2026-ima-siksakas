@@ -5,9 +5,13 @@
 //  Created by Siksaka Suriyasat on 10/1/26.
 //
 import SwiftUI
+import SwiftData
 import AVFoundation
 
 struct FlashcardView: View {
+    @Query var savedWords: [SavedWords]
+    @Environment(\.modelContext) var modelContext
+    
     var flashcard: Flashcard
     var canCheckAnswer: Bool
     
@@ -21,7 +25,8 @@ struct FlashcardView: View {
                 HStack {
                     Spacer()
                     Button {
-                        
+                        modelContext.insert(SavedWords(savedFront: flashcard.front, savedBack: flashcard.back))
+                        print(savedWords)
                     } label: {
                         Image(systemName: "bookmark")
                     }
@@ -83,5 +88,7 @@ struct FlashcardView: View {
 }
 
 #Preview {
-//    FlashcardView(flashcard: Flashcard(front: "สวัสดี", back: "Hello"), canCheckAnswer: true,)
+    @Previewable @State var tempBool: Bool = false
+    FlashcardView(flashcard: Flashcard(front: "สวัสดี", back: "Hello"), canCheckAnswer: true,currentSide: $tempBool)
+    
 }

@@ -54,6 +54,29 @@ struct ContentView: View {
                     .navigationBarTitleDisplayMode(.inline)
             }
             
+            NavigationLink{
+                SavedView()
+            } label: {
+                Text("Saved Flashcards")
+                    .foregroundStyle(Color.bgDarker)
+                    .font(Font.body.bold())
+                    .fontDesign(.rounded)
+                    .frame(maxWidth: .infinity,maxHeight: 75)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.bg)
+                    )
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.bgDark)
+                            .offset(y:6)
+                    )
+                    .padding(.vertical, 5)
+                    
+                    .navigationTitle(Text("Learn Thai!"))
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            
         }
         .padding()
     }

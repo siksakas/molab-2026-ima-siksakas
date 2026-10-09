@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Week4App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(for: SavedWords.self)
         }
     }
 }
