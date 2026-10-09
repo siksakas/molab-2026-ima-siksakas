@@ -9,12 +9,35 @@ import SwiftUI
 struct ReviewView: View {
     @State private var index: Int = 0
     
+    @AppStorage("thaiFirst") var thaiFirst = true
+    @State var setTo: Bool = true
+    
     var body: some View {
         
-        VStack {
-            FlashcardView(flashcard: flashcards[index],canCheckAnswer: true)
+        ZStack {
+            HStack {
+                Text("Show thai first?  ")
+                
+                
+                Button {
+                    thaiFirst.toggle()
+                    setTo = thaiFirst
+                } label: {
+                    Image(systemName: "arrow.trianglehead.2.clockwise.rotate.90")
+                        .foregroundStyle(Color.black)
+                        .font(Font.largeTitle)
+                }
+                
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity,alignment: .top)
+            .padding(20)
             
-            indexButtons
+            
+            VStack {
+                FlashcardView(flashcard: flashcards[index],canCheckAnswer: true, currentSide: $thaiFirst)
+                
+                indexButtons
+            }
         }
     }
     
@@ -26,6 +49,10 @@ struct ReviewView: View {
                 } else {
                     index = flashcards.count-1
                 }
+                if (thaiFirst != setTo){
+                    thaiFirst.toggle()
+                }
+                
             } label: {
                 Image(systemName: "arrow.left")
                     .foregroundStyle(Color.bgDarker)
@@ -47,6 +74,9 @@ struct ReviewView: View {
                     index += 1
                 } else {
                     index = 0
+                }
+                if (thaiFirst != setTo){
+                    thaiFirst.toggle()
                 }
             } label: {
                 Image(systemName: "arrow.right")

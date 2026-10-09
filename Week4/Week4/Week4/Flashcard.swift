@@ -10,6 +10,8 @@ struct Flashcard {
     var back: String
 }
 
+
+
 let flashcards: [Flashcard] = [
     Flashcard(front: "สวัสดี", back: "Hello"),
     Flashcard(front: "ขอบคุณ", back: "Thank you"),

@@ -17,12 +17,14 @@ struct TestingView: View {
     @State var currentCorrectAnswer = Int.random(in:0...2)
     @State private var player: AVAudioPlayer? = nil
     
+    @State var thaiFirst = true
+    
     let correct = bundleAudio[0]
     let incorrect = bundleAudio[1]
     
     var body: some View {
         VStack{
-            FlashcardView(flashcard: flashcards[index],canCheckAnswer: false)
+            FlashcardView(flashcard: flashcards[index],canCheckAnswer: false, currentSide:$thaiFirst)
             
             answerButtons
         }
