@@ -1,0 +1,122 @@
+[
+  {
+    "id": "hello",
+    "thai": "สวัสดี",
+    "english": "hello",
+    "type": "phrase"
+  },
+  {
+    "id": "thank_you",
+    "thai": "ขอบคุณ",
+    "english": "thank you",
+    "type": "phrase"
+  },
+  {
+    "id": "yes",
+    "thai": "ใช่",
+    "english": "yes",
+    "type": "word"
+  },
+  {
+    "id": "no",
+    "thai": "ไม่",
+    "english": "no / not",
+    "type": "word"
+  },
+  {
+    "id": "eat",
+    "thai": "กิน",
+    "english": "to eat",
+    "type": "verb"
+  },
+  {
+    "id": "drink",
+    "thai": "ดื่ม",
+    "english": "to drink",
+    "type": "verb"
+  },
+  {
+    "id": "go",
+    "thai": "ไป",
+    "english": "to go",
+    "type": "verb"
+  },
+  {
+    "id": "come",
+    "thai": "มา",
+    "english": "to come",
+    "type": "verb"
+  },
+  {
+    "id": "sleep",
+    "thai": "นอน",
+    "english": "to sleep",
+    "type": "verb"
+  },
+  {
+    "id": "speak",
+    "thai": "พูด",
+    "english": "to speak",
+    "type": "verb"
+  },
+  {
+    "id": "house",
+    "thai": "บ้าน",
+    "english": "house / home",
+    "type": "noun"
+  },
+  {
+    "id": "water",
+    "thai": "น้ำ",
+    "english": "water",
+    "type": "noun"
+  },
+  {
+    "id": "food",
+    "thai": "อาหาร",
+    "english": "food",
+    "type": "noun"
+  },
+  {
+    "id": "friend",
+    "thai": "เพื่อน",
+    "english": "friend",
+    "type": "noun"
+  },
+  {
+    "id": "cat",
+    "thai": "แมว",
+    "english": "cat",
+    "type": "noun"
+  },
+  {
+    "id": "dog",
+    "thai": "หมา",
+    "english": "dog",
+    "type": "noun"
+  },
+  {
+    "id": "good",
+    "thai": "ดี",
+    "english": "good",
+    "type": "adjective"
+  },
+  {
+    "id": "big",
+    "thai": "ใหญ่",
+    "english": "big",
+    "type": "adjective"
+  },
+  {
+    "id": "small",
+    "thai": "เล็ก",
+    "english": "small",
+    "type": "adjective"
+  },
+  {
+    "id": "beautiful",
+    "thai": "สวย",
+    "english": "beautiful",
+    "type": "adjective"
+  }
+]
