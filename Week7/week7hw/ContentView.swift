@@ -70,13 +70,16 @@ struct ContentView: View {
             height: CGFloat(pixelsWide) * aspectRatio
         )
         
+        // sets canvas at the set size
         let renderer = UIGraphicsImageRenderer(size: size)
         
+        //creates canvas at this size
         let rectangle = CGRect(
             origin: .zero,
             size: size
         )
 
+        // draw image onto the smaller canvas
         let newImage = renderer.image { _ in
             image.draw(in: rectangle)
         }
