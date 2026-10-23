@@ -59,25 +59,30 @@ struct ContentView: View {
         
     }
     
+    // takes the original image, defines new size / smaller canvas, and redraws original image in that smaller size
     private func pixelate(_ image: UIImage, _ pixelsWide: Double) -> UIImage {
         
         let aspectRatio = image.size.height / image.size.width
         
+        // creates the size and width based off of the aspectRatio
         let size = CGSize(
-            width: CGFloat(pixelsWide),
+            width: CGFloat(pixelsWide), // width in pixels
             height: CGFloat(pixelsWide) * aspectRatio
         )
         
         let renderer = UIGraphicsImageRenderer(size: size)
         
-        return renderer.image { _ in
-            image.draw(
-                in: CGRect(
-                    origin: .zero,
-                    size: size
-                )
-            )
+        let rectangle = CGRect(
+            origin: .zero,
+            size: size
+        )
+
+        let newImage = renderer.image { _ in
+            image.draw(in: rectangle)
         }
+        
+        
+        return newImage
     }
 }
 
