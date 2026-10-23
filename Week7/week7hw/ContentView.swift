@@ -12,7 +12,8 @@ struct ContentView: View {
     
     // stores which photo the user selected
     @State private var selectedItem: PhotosPickerItem?
-    @State private var image: UIImage?
+    @State private var originalImage: UIImage?
+    @State private var image: UIImage?           //actual displayed img
     @State private var pixelsWide = 64.0
     
     var body: some View {
@@ -33,8 +34,8 @@ struct ContentView: View {
             }
             
             Button("Convert to Pixel Art") {
-                if let image {
-                    self.image = pixelate(image,pixelsWide)
+                if let originalImage {
+                    self.image = pixelate(originalImage, pixelsWide)
                 }
             }
             
@@ -51,10 +52,16 @@ struct ContentView: View {
                 if let data = try? await newItem?.loadTransferable(type: Data.self),
                    let loadedImage = UIImage(data: data) {
 
+                    originalImage = loadedImage
                     image = loadedImage
                 }
             }
         }
+        .onChange(of: pixelsWide) { _, newValue in // so it automatically updates
+                    if let originalImage {
+                        image = pixelate(originalImage, newValue)
+                    }
+                }
         
         
     }
@@ -71,7 +78,9 @@ struct ContentView: View {
         )
         
         // sets canvas at the set size
-        let renderer = UIGraphicsImageRenderer(size: size)
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        let renderer = UIGraphicsImageRenderer(size: size, format: format)
         
         //creates canvas at this size
         let rectangle = CGRect(
