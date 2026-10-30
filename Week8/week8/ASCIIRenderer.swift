@@ -63,6 +63,7 @@ struct ASCIIRenderer {
                 //mayb should hv made a 2d arr instead
                 let brightness = Int(pixels[y * width + x])
                 
+                //turns brightness val into a number within index range
                 let index = brightness * (characters.count - 1) / 255
 
                 output.append(characters[index])
