@@ -23,6 +23,7 @@ struct ASCIIRenderer {
             count: width * height //
         )
         
+        // converts img to greyscale and resizes
         let success = pixels.withUnsafeMutableBytes { bytes in
            guard let context = CGContext(
             data: bytes.baseAddress, //pointer to the very first byte of the buffer
@@ -31,13 +32,14 @@ struct ASCIIRenderer {
             bitsPerComponent: 8,
             bytesPerRow: width,
             space: CGColorSpaceCreateDeviceGray(), //converts to greyscale
-            bitmapInfo: CGImageAlphaInfo.none.rawValue
+            bitmapInfo: CGImageAlphaInfo.none.rawValue //has no alpha
            ) else {
                return false
            }
             
             context.interpolationQuality = .high
 
+            //acc draws to the canvas, but this canvas and the pixels arr is using the same region of memory or the same buffer
             context.draw(
                 cgImage,
                 in: CGRect(
@@ -59,6 +61,9 @@ struct ASCIIRenderer {
         
         for y in 0..<height {
             for x in 0..<width {
+                //the character it appends depends on the brightness, which is the pixel val which was
+                //edited bc its the same place in memory as the canvas
+                
                 //the pixels arr is one dimensional so it gets the row and col from y * width + x
                 //mayb should hv made a 2d arr instead
                 let brightness = Int(pixels[y * width + x])
